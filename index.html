@@ -1,0 +1,463 @@
+<title>Elevations Design Build</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap">
+<style>
+  /* Bright, photography-forward. White + warm stone sections, near-black ink,
+     a single restrained brass accent. Committed single light theme.
+     Layout: full-bleed video banner, then an airy editorial flow. */
+  :root{
+    --white:#ffffff;
+    --stone:#f5f2ec;
+    --stone-2:#ece7de;
+    --ink:#1b1a17;
+    --ink-soft:#54504a;
+    --faint:#8f8a81;
+    --line:#e4dfd6;
+    --brass:#8a6a2f;
+    --brass-bright:#b58a48;
+    color-scheme:light;
+
+    --f-head:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+    --f-sans:"Archivo","Helvetica Neue",Arial,sans-serif;
+
+    --s--1:clamp(.82rem,.79rem + .15vw,.9rem);
+    --s-0:clamp(1rem,.96rem + .2vw,1.1rem);
+    --s-1:clamp(1.18rem,1.08rem + .45vw,1.45rem);
+    --s-2:clamp(1.5rem,1.3rem + .9vw,2.05rem);
+    --s-3:clamp(2rem,1.55rem + 2.1vw,3.3rem);
+    --s-4:clamp(2.4rem,1.7rem + 3.4vw,4.4rem);
+
+    --maxw:1200px;
+    --gutter:clamp(18px,5vw,64px);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--white);color:var(--ink);font-family:var(--f-sans);
+    font-size:var(--s-0);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{margin:0;text-wrap:balance;line-height:1.1;font-weight:400}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
+  .pad{padding-block:clamp(3.5rem,8vw,6.5rem)}
+  .tint{background:var(--stone)}
+  main>section+section{border-top:1px solid var(--line)}
+
+  .eyebrow{font-family:var(--f-sans);font-weight:700;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--brass);display:inline-flex;align-items:center;gap:.6em}
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--brass-bright)}
+
+  .head{font-family:var(--f-head)}
+
+  .btn{font-family:var(--f-sans);font-weight:600;font-size:.76rem;letter-spacing:.11em;
+    text-transform:uppercase;display:inline-flex;align-items:center;gap:.6em;
+    padding:.95em 1.6em;border:1px solid var(--ink);cursor:pointer;
+    transition:background .22s,color .22s,border-color .22s,transform .1s}
+  .btn:active{transform:translateY(1px)}
+  .btn-solid{background:var(--ink);color:var(--white)}
+  .btn-solid:hover{background:#2f2d28}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn-ghost:hover{border-color:var(--ink)}
+  .btn-lg{padding:1.08em 1.9em;font-size:.8rem}
+
+  /* ---------- header ---------- */
+  header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
+    background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+    transition:box-shadow .3s}
+  header.nav.scrolled{box-shadow:0 8px 30px -22px rgba(27,26,23,.5)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;padding-block:.7rem}
+  .logo{display:block}
+  .logo img{height:clamp(34px,4.6vw,46px);width:auto}
+  .nav-links{display:flex;align-items:center;gap:1.9rem;font-weight:600;font-size:.78rem;
+    letter-spacing:.07em;text-transform:uppercase}
+  .nav-links a{color:var(--ink);opacity:.72;transition:opacity .2s}
+  .nav-links a:hover{opacity:1}
+  .nav-right{display:flex;align-items:center;gap:1.2rem}
+  .menu-btn{display:none;background:var(--white);border:1px solid var(--line);color:var(--ink);
+    width:44px;height:40px;align-items:center;justify-content:center;cursor:pointer}
+  .menu-btn svg{width:18px;height:18px}
+  #mobile{display:none;background:var(--white);border-top:1px solid var(--line)}
+  #mobile .wrap{display:flex;flex-direction:column;padding-block:.4rem 1rem}
+  #mobile a{font-weight:600;font-size:.92rem;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--ink);padding:.8rem 0;border-bottom:1px solid var(--line)}
+  #mobile a:last-child{border-bottom:none;color:var(--brass)}
+
+  /* ---------- hero video banner (full, unobstructed) ---------- */
+  .hero{position:relative;width:100%;aspect-ratio:16/9;max-height:80vh;overflow:hidden;background:#0d0d0c}
+  .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-tag{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 0 1.4rem;
+    background:linear-gradient(to top,rgba(13,13,12,.55),transparent);pointer-events:none}
+  .hero-tag .eyebrow{color:#fff}
+  .hero-tag .eyebrow::before{background:#fff}
+
+  /* ---------- hero statement (bright) ---------- */
+  .statement{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.4rem,5vw,4rem);align-items:end}
+  .statement h1{font-family:var(--f-head);font-weight:500;font-size:var(--s-4);letter-spacing:-.02em;
+    margin-top:1rem;max-width:15ch}
+  .statement h1 em{font-style:normal;color:var(--brass)}
+  .statement .sub{color:var(--ink-soft);font-size:var(--s-1);max-width:50ch}
+  .statement .actions{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.8rem}
+  .trust{display:flex;flex-wrap:wrap;gap:.5rem .8rem;align-items:center;
+    font-weight:700;font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+
+  /* ---------- stat grid ---------- */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--white);padding:1.4rem 1.3rem}
+  .stat .n{font-family:var(--f-head);font-size:clamp(1.35rem,1.05rem + 1.1vw,1.75rem);font-weight:600;
+    line-height:1.1;letter-spacing:-.01em}
+  .stat .l{margin-top:.4rem;font-size:.82rem;color:var(--ink-soft);line-height:1.45}
+
+  /* ---------- section heads ---------- */
+  .sec-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+    gap:1.2rem;margin-bottom:2.6rem}
+  .sec-head h2{font-family:var(--f-head);font-size:var(--s-3);font-weight:400;letter-spacing:-.01em;max-width:20ch;margin-top:.9rem}
+  .sec-head .lead{color:var(--ink-soft);max-width:38ch}
+
+  /* ---------- services ---------- */
+  .services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .svc{background:var(--white);padding:1.9rem 1.7rem;display:flex;flex-direction:column;gap:.6rem;transition:background .22s}
+  .svc:hover{background:var(--stone)}
+  .svc .num{font-weight:700;font-size:.68rem;letter-spacing:.16em;color:var(--brass)}
+  .svc h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500}
+  .svc p{color:var(--ink-soft);font-size:var(--s--1);line-height:1.6}
+
+  /* ---------- featured work ---------- */
+  .work{display:grid;grid-template-columns:repeat(6,1fr);gap:clamp(14px,1.8vw,26px)}
+  .proj{display:flex;flex-direction:column}
+  .proj .frame{position:relative;overflow:hidden;background:var(--stone)}
+  .proj .frame img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+  .proj:hover .frame img{transform:scale(1.045)}
+  .proj .cap{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding-top:.95rem}
+  .proj .cap h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500}
+  .proj .cap .meta{font-weight:600;font-size:.64rem;letter-spacing:.11em;text-transform:uppercase;
+    color:var(--faint);text-align:right;white-space:nowrap}
+  .c4{grid-column:span 4}.c2{grid-column:span 2}
+  .ar-wide{aspect-ratio:3/2}.ar-tall{aspect-ratio:3/4}
+
+  /* ---------- film ---------- */
+  .film{position:relative;aspect-ratio:16/9;background:#0d0d0c;overflow:hidden;border:1px solid var(--line)}
+  .film video{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* ---------- process ---------- */
+  .process{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .step{padding:0 1.6rem;border-left:1px solid var(--stone-2)}
+  .step:first-child{border-left:none;padding-left:0}
+  .step .num{font-weight:700;font-size:.72rem;letter-spacing:.18em;color:var(--brass);
+    display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+  .step .num::after{content:"";height:1px;flex:1;background:var(--stone-2)}
+  .step h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500;margin-bottom:.5rem}
+  .step p{color:var(--ink-soft);font-size:var(--s--1);line-height:1.6}
+
+  /* ---------- about / difference ---------- */
+  .split{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,5vw,4.5rem);align-items:center}
+  .split .frame{position:relative;overflow:hidden;aspect-ratio:4/5}
+  .split .frame img{width:100%;height:100%;object-fit:cover}
+  .diff-list{display:flex;flex-direction:column;gap:1.3rem;margin-top:1.8rem}
+  .diff{display:flex;gap:1rem}
+  .diff .k{font-weight:700;color:var(--brass);width:1.5rem;flex:none;font-size:.95rem;line-height:1.5}
+  .diff h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500;margin-bottom:.25rem}
+  .diff p{color:var(--ink-soft);font-size:var(--s--1)}
+
+  /* ---------- CTA band ---------- */
+  .band{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    min-height:clamp(380px,48vw,520px);text-align:center}
+  .band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .band::after{content:"";position:absolute;inset:0;background:rgba(27,26,23,.22)}
+  .band-card{position:relative;background:rgba(255,255,255,.93);backdrop-filter:blur(6px);
+    padding:clamp(1.8rem,4vw,3rem);max-width:600px;margin:1.2rem;box-shadow:0 30px 70px -40px rgba(27,26,23,.5)}
+  .band-card h2{font-family:var(--f-head);font-size:var(--s-3);font-weight:400}
+  .band-card h2 em{font-style:normal;color:var(--brass)}
+  .band-card p{margin-top:.9rem;color:var(--ink-soft)}
+  .band-card .btn{margin-top:1.5rem}
+
+  /* ---------- contact ---------- */
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4.5rem)}
+  form{display:flex;flex-direction:column;gap:1.05rem;margin-top:1.6rem}
+  .field{display:flex;flex-direction:column;gap:.4rem}
+  label{font-weight:700;font-size:.66rem;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-soft)}
+  input,select,textarea{font-family:var(--f-sans);font-size:1rem;color:var(--ink);background:var(--white);
+    border:1px solid var(--line);padding:.82rem .95rem;width:100%}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--brass-bright);outline-offset:1px;border-color:var(--brass-bright)}
+  textarea{resize:vertical;min-height:120px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:1.05rem}
+  .form-note{font-size:.66rem;letter-spacing:.03em;color:var(--faint)}
+  #sent{display:none;background:var(--stone);border:1px solid var(--brass-bright);padding:1.1rem;font-size:.85rem}
+  .cinfo{display:flex;flex-direction:column;gap:1.7rem}
+  .cinfo .l{font-weight:700;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--brass);margin-bottom:.35rem}
+  .cinfo .v{font-size:var(--s-1);font-weight:400;color:var(--ink)}
+  .cinfo .v.small{font-size:1rem;color:var(--ink-soft)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#e8e4dc}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;padding-block:3.2rem 2.2rem}
+  .foot .logo img{height:40px;filter:invert(1) brightness(1.7)}
+  .foot-blurb{max-width:26ch;color:#b3ada3;margin-top:1rem;font-size:var(--s--1)}
+  .foot-col{display:flex;flex-direction:column;gap:.65rem;font-size:.82rem;color:#c6c1b7}
+  .foot-col .h{font-weight:700;font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;color:#88837a}
+  .foot-col a:hover{color:#fff}
+  .legal{border-top:1px solid rgba(255,255,255,.12);padding-block:1.4rem;display:flex;flex-wrap:wrap;
+    justify-content:space-between;gap:.6rem;font-size:.68rem;letter-spacing:.04em;color:#88837a}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .nav-links{display:none}
+    .menu-btn{display:flex}
+    .statement{grid-template-columns:1fr}
+    .services{grid-template-columns:repeat(2,1fr)}
+    .process{grid-template-columns:repeat(2,1fr);gap:2rem 0}
+    .step{padding-left:1.6rem}.step:first-child{padding-left:1.6rem}
+    .step:nth-child(odd){border-left:none;padding-left:0}
+    .split{grid-template-columns:1fr}
+    .split .frame{aspect-ratio:16/10}
+    .contact{grid-template-columns:1fr}
+    .hero{max-height:none}
+  }
+  @media(max-width:560px){
+    .services{grid-template-columns:1fr}
+    .process{grid-template-columns:1fr}
+    .step,.step:nth-child(odd){border-left:none;padding-left:0}
+    .work{grid-template-columns:repeat(2,1fr)}
+    .c4,.c2{grid-column:span 2}
+    .two{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="Elevations Design Build home"><img src="assets/logo.png" alt="Elevations Design Build"></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#contact" class="btn btn-solid">Consultation</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile">
+    <div class="wrap">
+      <a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a>
+      <a href="#about">About</a><a href="#contact">Contact</a><a href="#contact">Get a consultation &rarr;</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO VIDEO BANNER -->
+  <section class="hero" aria-label="Project film">
+    <video autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
+      <source src="assets/video/hero-loop.mp4" type="video/mp4">
+    </video>
+    <div class="hero-tag"><div class="wrap"><span class="eyebrow">Encinitas whole&#8209;home remodel</span></div></div>
+  </section>
+
+  <!-- HERO STATEMENT -->
+  <section class="pad">
+    <div class="wrap statement">
+      <div>
+        <span class="eyebrow">Residential Design &amp; Build &middot; North County San Diego</span>
+        <h1>Homes designed and built to <em>live in, not just look at.</em></h1>
+      </div>
+      <div>
+        <p class="sub">One team, one contract &mdash; from the first drawing to the final walk&#8209;through. Kitchens, baths, additions, and whole&#8209;home remodels across Encinitas, Carlsbad, and North County San Diego.</p>
+        <div class="actions">
+          <a href="#work" class="btn btn-solid btn-lg">View our work</a>
+          <a href="#contact" class="btn btn-ghost btn-lg">Start a project</a>
+        </div>
+        <div class="trust" style="margin-top:1.6rem"><span>Licensed</span><span>&middot;</span><span>Bonded</span><span>&middot;</span><span>Insured</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO + STATS -->
+  <section class="pad tint">
+    <div class="wrap statement">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 class="head" style="font-size:var(--s-3);font-weight:400;margin-top:1rem;max-width:18ch">A design&#8209;build firm for homeowners who want it done once, and done right.</h2>
+        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:52ch">We handle design, planning, and construction in&#8209;house &mdash; so you have a single team accountable from concept to completion. The result is a smoother project, a budget you can trust, and craftsmanship that holds up for decades.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="n">Design&#8209;build</div><div class="l">Design &amp; construction under one roof</div></div>
+        <div class="stat"><div class="n">Licensed</div><div class="l">Bonded &amp; fully insured</div></div>
+        <div class="stat"><div class="n">North County</div><div class="l">Encinitas, Carlsbad &amp; the coast</div></div>
+        <div class="stat"><div class="n">One team</div><div class="l">First sketch to final walk&#8209;through</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">What we do</span><h2>Full&#8209;service remodeling, under one roof.</h2></div>
+        <p class="lead">From a single room to a whole&#8209;home transformation, we own every step &mdash; design, permitting, and construction.</p>
+      </div>
+      <div class="services">
+        <article class="svc"><span class="num">01</span><h3>Kitchen remodels</h3><p>Layouts that work the way you cook &mdash; custom cabinetry, stone, and lighting specified to the detail.</p></article>
+        <article class="svc"><span class="num">02</span><h3>Bath &amp; primary suites</h3><p>Spa&#8209;grade bathrooms with tile and waterproofing done to last decades, not seasons.</p></article>
+        <article class="svc"><span class="num">03</span><h3>Additions &amp; second stories</h3><p>More room that looks like it was always there, matched to your home's character.</p></article>
+        <article class="svc"><span class="num">04</span><h3>Whole&#8209;home remodels</h3><p>Top&#8209;to&#8209;bottom reimaginings, phased so your family can live through it with less disruption.</p></article>
+        <article class="svc"><span class="num">05</span><h3>Outdoor living</h3><p>Pools, decks, and patios that extend the house into the yard for year&#8209;round use.</p></article>
+        <article class="svc"><span class="num">06</span><h3>Custom cabinetry &amp; storage</h3><p>Built&#8209;ins and smart storage designed around how you actually live, down to the drawer.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work" class="pad tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Selected work</span><h2>Recent projects.</h2></div>
+        <p class="lead">Kitchens, baths, and outdoor spaces we've designed and built across North County San Diego.</p>
+      </div>
+      <div class="work">
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/k-oak-dining.jpg" alt="White-oak kitchen with marble backsplash and brass pendants" loading="lazy"></div>
+          <div class="cap"><h3>White&#8209;oak kitchen &amp; dining</h3><span class="meta">North County, CA<br>Kitchen</span></div></article>
+        <article class="proj c2"><div class="frame ar-tall"><img src="assets/k-island.jpg" alt="Custom oak island with marble waterfall counter" loading="lazy"></div>
+          <div class="cap"><h3>Marble island</h3><span class="meta">North County, CA<br>Kitchen</span></div></article>
+        <article class="proj c2"><div class="frame ar-tall"><img src="assets/bath-blue.jpg" alt="Primary bath with blue vertical tile and wood vanity" loading="lazy"></div>
+          <div class="cap"><h3>Primary bath</h3><span class="meta">Encinitas, CA<br>Bath</span></div></article>
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/pool.jpg" alt="Backyard pool and spa with waterfall and lounge area" loading="lazy"></div>
+          <div class="cap"><h3>Resort&#8209;style backyard</h3><span class="meta">Carlsbad, CA<br>Outdoor living</span></div></article>
+        <article class="proj c4"><div class="frame ar-wide"><img src="assets/k-galley.jpg" alt="Light oak galley kitchen with floating shelves" loading="lazy"></div>
+          <div class="cap"><h3>Chef's kitchen</h3><span class="meta">Carlsbad, CA<br>Kitchen</span></div></article>
+        <article class="proj c2"><div class="frame ar-tall"><img src="assets/closet.jpg" alt="Custom walk-in closet with built-in storage" loading="lazy"></div>
+          <div class="cap"><h3>Custom storage</h3><span class="meta">Encinitas, CA<br>Built&#8209;ins</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILM -->
+  <section id="film" class="pad">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">On film</span><h2>Watch a remodel come together.</h2></div>
+        <p class="lead">A start&#8209;to&#8209;finish look at a recent whole&#8209;home remodel &mdash; from bare construction to the finished reveal.</p>
+      </div>
+      <div class="film">
+        <video controls preload="none" poster="assets/video/saxony-poster.jpg">
+          <source src="assets/video/saxony-transformation.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="form-note" style="margin-top:.9rem">Encinitas whole&#8209;home remodel &mdash; construction to completed.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="pad tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">How it works</span><h2>A clear path, start to finish.</h2></div>
+        <p class="lead">Design&#8209;build means no finger&#8209;pointing between an architect and a contractor. You deal with us, and the drawings match the budget from day one.</p>
+      </div>
+      <div class="process">
+        <div class="step"><div class="num">01</div><h3>Consultation</h3><p>We walk your home, listen to how you live, and talk honestly about scope and budget before anyone draws a line.</p></div>
+        <div class="step"><div class="num">02</div><h3>Design &amp; estimate</h3><p>Plans, 3D views, and a fixed, itemized estimate &mdash; materials and allowances spelled out, no surprises.</p></div>
+        <div class="step"><div class="num">03</div><h3>Build</h3><p>One crew, a protected worksite, and weekly updates. You always know what's happening this week and next.</p></div>
+        <div class="step"><div class="num">04</div><h3>Walk&#8209;through</h3><p>We finish the punch list together, hand over warranties and care notes, and stay reachable long after.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="pad">
+    <div class="wrap split">
+      <div class="frame"><img src="assets/about.jpg" alt="Custom oak kitchen island with marble counter and brass lighting" loading="lazy"></div>
+      <div>
+        <span class="eyebrow">Why Elevations</span>
+        <h2 class="head" style="font-size:var(--s-3);font-weight:400;margin-top:1rem">Built by people who answer their own phone.</h2>
+        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:48ch">Elevations Design Build is a North County San Diego design&#8209;build firm. We handle design, planning, and construction in&#8209;house, so homeowners work with one accountable team from the first sketch to the final walk&#8209;through.</p>
+        <div class="diff-list">
+          <div class="diff"><span class="k">A</span><div><h3>One accountable team</h3><p>Designer, estimator, and builder work from the same drawings and the same budget.</p></div></div>
+          <div class="diff"><span class="k">B</span><div><h3>Fixed, transparent pricing</h3><p>Allowances and selections itemized up front. Change orders in writing, never a surprise.</p></div></div>
+          <div class="diff"><span class="k">C</span><div><h3>Craftsmanship that holds up</h3><p>We build the parts you can't see &mdash; framing, waterproofing, mechanicals &mdash; to the same standard as the finishes.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="band">
+    <img src="assets/pool.jpg" alt="Backyard pool at a completed Elevations project">
+    <div class="band-card">
+      <span class="eyebrow">Let's talk</span>
+      <h2 style="margin-top:.8rem">Thinking about a remodel? <em>Start with a conversation.</em></h2>
+      <p>Tell us about your home and what you're hoping to change. We'll take it from there.</p>
+      <a href="#contact" class="btn btn-solid btn-lg">Request a consultation</a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="pad">
+    <div class="wrap contact">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="head" style="font-size:var(--s-2);font-weight:500;margin-top:1rem">Tell us about your project.</h2>
+        <p style="color:var(--ink-soft);margin-top:.7rem;max-width:42ch">A few details help us point you in the right direction before we visit.</p>
+        <form id="form" novalidate>
+          <div class="two">
+            <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel"></div>
+          </div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="type">Project type</label>
+            <select id="type" name="type"><option>Kitchen remodel</option><option>Bathroom / suite</option><option>Addition / second story</option><option>Whole-home remodel</option><option>Outdoor living</option><option>Custom cabinetry / storage</option><option>Not sure yet</option></select>
+          </div>
+          <div class="field"><label for="msg">About the project</label><textarea id="msg" name="msg" placeholder="What are you hoping to change, and roughly when?"></textarea></div>
+          <button type="submit" class="btn btn-solid btn-lg">Send inquiry</button>
+          <p class="form-note">On the live site this inquiry emails the studio. Nothing is sent from this preview.</p>
+          <div id="sent" role="status">Thanks &mdash; on the live site this would reach the studio and you'd hear back within one business day.</div>
+        </form>
+      </div>
+      <div class="cinfo">
+        <div><div class="l">Serving</div><div class="v small">Encinitas, Carlsbad &amp; North County San Diego</div></div>
+        <div><div class="l">Hours</div><div class="v small">Mon&ndash;Fri, 8&ndash;5 &middot; Site visits by appointment</div></div>
+        <div><div class="l">Phone &amp; email</div><div class="v small">To be added &mdash; share your preferred phone and email and they'll appear here.</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div style="max-width:24ch">
+      <a class="logo" href="#top"><img src="assets/logo.png" alt="Elevations Design Build"></a>
+      <p class="foot-blurb">Residential design &amp; build in North County San Diego. Licensed, bonded, and insured.</p>
+    </div>
+    <div class="foot-col"><span class="h">Explore</span><a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a><a href="#about">About</a></div>
+    <div class="foot-col"><span class="h">Area</span><span>Encinitas, CA</span><span>Carlsbad, CA</span><span>North County San Diego</span></div>
+    <div class="foot-col"><span class="h">Follow</span><a href="#contact">Instagram</a><a href="#contact">Houzz</a><a href="#contact">Google</a></div>
+  </div>
+  <div class="wrap legal">
+    <span>&copy; <span id="yr"></span> Elevations Design Build. All rights reserved.</span>
+    <span>North County San Diego</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav=document.getElementById('nav');
+    var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>12)};
+    onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+    var btn=document.getElementById('menuBtn'),m=document.getElementById('mobile');
+    btn.addEventListener('click',function(){
+      var open=m.style.display==='block';m.style.display=open?'none':'block';
+      btn.setAttribute('aria-expanded',String(!open));
+    });
+    m.addEventListener('click',function(e){if(e.target.tagName==='A')m.style.display='none';});
+    var form=document.getElementById('form'),sent=document.getElementById('sent');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return;}
+      sent.style.display='block';form.querySelector('button[type=submit]').disabled=true;
+      sent.scrollIntoView({block:'nearest'});
+    });
+    var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
+  })();
+</script>
