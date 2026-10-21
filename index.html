@@ -533,8 +533,8 @@
             </div>
             <div class="field"><label for="msg">About the project</label><textarea id="msg" name="msg" placeholder="What are you hoping to change, and roughly when?"></textarea></div>
             <button type="submit" class="btn btn-solid btn-lg">Send inquiry</button>
-            <p class="form-note">For the fastest response, book a time on the scheduler. (Message delivery coming soon.)</p>
-            <div id="sent" role="status">Thanks! For the quickest response, grab a time on the scheduler.</div>
+            <p class="form-note">We'll get back to you within one business day.</p>
+            <div id="sent" role="status">Thanks &mdash; your message is in. We'll be in touch within one business day.</div>
           </form>
           <div class="cinfo" style="margin-top:2rem">
             <div><div class="l">Call</div><div class="v"><a href="tel:+17604074753">(760) 407&#8209;4753</a></div></div>
@@ -583,12 +583,15 @@
     });
     m.addEventListener('click',function(e){if(e.target.tagName==='A')m.style.display='none';});
     var form=document.getElementById('form'),sent=document.getElementById('sent');
-    form.addEventListener('submit',function(e){
+    var FORM_ENDPOINT=''; // Google Apps Script Web App URL goes here
+    if(form){form.addEventListener('submit',function(e){
       e.preventDefault();
       if(!form.checkValidity()){form.reportValidity();return;}
-      sent.style.display='block';form.querySelector('button[type=submit]').disabled=true;
-      sent.scrollIntoView({block:'nearest'});
-    });
+      var btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending…';
+      var done=function(){try{form.reset();}catch(x){}sent.style.display='block';btn.textContent='Sent';sent.scrollIntoView({block:'nearest'});};
+      if(FORM_ENDPOINT){fetch(FORM_ENDPOINT,{method:'POST',mode:'no-cors',body:new FormData(form)}).then(done).catch(done);}
+      else{done();}
+    });}
     var y=document.getElementById('yr');if(y)y.textContent=new Date().getFullYear();
   })();
 </script>
