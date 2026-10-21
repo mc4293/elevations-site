@@ -92,9 +92,9 @@
   #mobile a:last-child{border-bottom:none;color:var(--brass)}
 
   /* ---------- hero video banner (full, unobstructed) ---------- */
-  .hero{position:relative;width:100%;aspect-ratio:16/9;max-height:80vh;overflow:hidden;background:#0d0d0c}
+  .hero{position:relative;width:min(100%,var(--maxw));margin:clamp(.4rem,1.2vw,.9rem) auto 0;aspect-ratio:16/9;max-height:72vh;overflow:hidden;background:#0d0d0c}
   .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .hero-tag{position:absolute;left:0;right:0;bottom:0;padding:2.4rem 0 1.4rem;
+  .hero-tag{position:absolute;left:0;right:0;bottom:0;padding:2.4rem clamp(18px,4vw,36px) 1.4rem;
     background:linear-gradient(to top,rgba(13,13,12,.55),transparent);pointer-events:none}
   .hero-tag .eyebrow{color:#fff}
   .hero-tag .eyebrow::before{background:#fff}
@@ -315,7 +315,7 @@
     <video autoplay muted loop playsinline preload="auto" poster="assets/video/hero-poster.jpg">
       <source src="assets/video/hero-loop.mp4" type="video/mp4">
     </video>
-    <div class="hero-tag"><div class="wrap"><span class="eyebrow">Encinitas remodel</span></div></div>
+    <div class="hero-tag"><span class="eyebrow">Encinitas remodel</span></div>
   </section>
 
   <!-- HERO STATEMENT -->
