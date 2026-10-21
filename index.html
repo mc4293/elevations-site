@@ -222,6 +222,8 @@
     .c4,.c2{grid-column:span 2}
     .two{grid-template-columns:1fr}
   }
+  .booking h3,.formcol h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500;margin-bottom:1rem}
+  .calendly-inline-widget{min-width:300px;height:680px;border:1px solid var(--line);background:var(--white)}
   @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
 </style>
@@ -233,7 +235,7 @@
       <a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a>
     </nav>
     <div class="nav-right">
-      <a href="#contact" class="btn btn-solid">Consultation</a>
+      <a href="https://calendly.com/john-elevationsdesignbuild/30min" target="_blank" rel="noopener" class="btn btn-solid">Book a consultation</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -242,7 +244,7 @@
   <div id="mobile">
     <div class="wrap">
       <a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a>
-      <a href="#about">About</a><a href="#contact">Contact</a><a href="#contact">Get a consultation &rarr;</a>
+      <a href="#about">About</a><a href="#contact">Contact</a><a href="https://calendly.com/john-elevationsdesignbuild/30min" target="_blank" rel="noopener">Book a consultation &rarr;</a>
     </div>
   </div>
 </header>
@@ -389,36 +391,44 @@
       <span class="eyebrow">Let's talk</span>
       <h2 style="margin-top:.8rem">Thinking about a remodel? <em>Start with a conversation.</em></h2>
       <p>Tell us about your home and what you're hoping to change. We'll take it from there.</p>
-      <a href="#contact" class="btn btn-solid btn-lg">Request a consultation</a>
+      <a href="#contact" class="btn btn-solid btn-lg">Book a consultation</a>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="pad">
-    <div class="wrap contact">
-      <div>
-        <span class="eyebrow">Get in touch</span>
-        <h2 class="head" style="font-size:var(--s-2);font-weight:500;margin-top:1rem">Tell us about your project.</h2>
-        <p style="color:var(--ink-soft);margin-top:.7rem;max-width:42ch">A few details help us point you in the right direction before we visit.</p>
-        <form id="form" novalidate>
-          <div class="two">
-            <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
-            <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel"></div>
-          </div>
-          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="type">Project type</label>
-            <select id="type" name="type"><option>Kitchen remodel</option><option>Bathroom / suite</option><option>Addition / second story</option><option>Whole-home remodel</option><option>Outdoor living</option><option>Custom cabinetry / storage</option><option>Not sure yet</option></select>
-          </div>
-          <div class="field"><label for="msg">About the project</label><textarea id="msg" name="msg" placeholder="What are you hoping to change, and roughly when?"></textarea></div>
-          <button type="submit" class="btn btn-solid btn-lg">Send inquiry</button>
-          <p class="form-note">On the live site this inquiry emails the studio. Nothing is sent from this preview.</p>
-          <div id="sent" role="status">Thanks &mdash; on the live site this would reach the studio and you'd hear back within one business day.</div>
-        </form>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Get in touch</span><h2>Book a consultation.</h2></div>
+        <p class="lead">Grab a free 30&#8209;minute call with John, or send your project details and we'll follow up.</p>
       </div>
-      <div class="cinfo">
-        <div><div class="l">Serving</div><div class="v small">Encinitas, Carlsbad &amp; North County San Diego</div></div>
-        <div><div class="l">Hours</div><div class="v small">Mon&ndash;Fri, 8&ndash;5 &middot; Site visits by appointment</div></div>
-        <div><div class="l">Phone &amp; email</div><div class="v small">To be added &mdash; share your preferred phone and email and they'll appear here.</div></div>
+      <div class="contact">
+        <div class="booking">
+          <h3>Book a 30&#8209;minute call</h3>
+          <div class="calendly-inline-widget" data-url="https://calendly.com/john-elevationsdesignbuild/30min?hide_gdpr_banner=1&amp;background_color=ffffff&amp;text_color=1b1a17&amp;primary_color=8a6a2f"></div>
+          <p class="form-note"><a href="https://calendly.com/john-elevationsdesignbuild/30min" target="_blank" rel="noopener">Open the scheduler in a new tab &rarr;</a></p>
+        </div>
+        <div class="formcol">
+          <h3>Prefer to send details?</h3>
+          <form id="form" novalidate>
+            <div class="two">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+              <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel"></div>
+            </div>
+            <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="type">Project type</label>
+              <select id="type" name="type"><option>Kitchen remodel</option><option>Bathroom / suite</option><option>Addition / second story</option><option>Whole-home remodel</option><option>Outdoor living</option><option>Custom cabinetry / storage</option><option>Not sure yet</option></select>
+            </div>
+            <div class="field"><label for="msg">About the project</label><textarea id="msg" name="msg" placeholder="What are you hoping to change, and roughly when?"></textarea></div>
+            <button type="submit" class="btn btn-solid btn-lg">Send inquiry</button>
+            <p class="form-note">For the fastest response, book a time on the scheduler. (Message delivery coming soon.)</p>
+            <div id="sent" role="status">Thanks! For the quickest response, grab a time on the scheduler.</div>
+          </form>
+          <div class="cinfo" style="margin-top:2rem">
+            <div><div class="l">Serving</div><div class="v small">Encinitas, Carlsbad &amp; North County San Diego</div></div>
+            <div><div class="l">Hours</div><div class="v small">Mon&ndash;Fri, 8&ndash;5 &middot; Site visits by appointment</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -440,6 +450,7 @@
   </div>
 </footer>
 
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
   (function(){
     var nav=document.getElementById('nav');
