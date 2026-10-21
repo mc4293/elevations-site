@@ -224,9 +224,23 @@
   }
   .booking h3,.formcol h3{font-family:var(--f-head);font-size:var(--s-1);font-weight:500;margin-bottom:1rem}
   .calendly-inline-widget{min-width:300px;height:680px;border:1px solid var(--line);background:var(--white)}
+  .topbar{background:var(--ink);color:#efe8da}
+  .topbar-inner{display:flex;align-items:center;justify-content:center;gap:.6rem 1.1rem;flex-wrap:wrap;
+    padding-block:.5rem;font-size:.82rem;text-align:center}
+  .topbar span{opacity:.86}
+  .topbar-btn{font-family:var(--f-sans);font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+    color:#1b1a17;background:var(--brass-bright);padding:.5em 1.15em;white-space:nowrap;transition:background .2s}
+  .topbar-btn:hover{background:#c99a58}
   @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
 </style>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <span>Planning a remodel in North County San Diego?</span>
+    <a href="https://calendly.com/john-elevationsdesignbuild/30min" target="_blank" rel="noopener" class="topbar-btn">Book a free consultation &rarr;</a>
+  </div>
+</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
