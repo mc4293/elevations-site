@@ -583,7 +583,7 @@
     });
     m.addEventListener('click',function(e){if(e.target.tagName==='A')m.style.display='none';});
     var form=document.getElementById('form'),sent=document.getElementById('sent');
-    var FORM_ENDPOINT=''; // Google Apps Script Web App URL goes here
+    var FORM_ENDPOINT='https://script.google.com/macros/s/AKfycbxjOhUsg4bTHpJ54TQWh9q_UtaL2ZaCyKtcj63nzAEUJRYk1jWT_B2yaxySkPvnGhNi/exec';
     if(form){form.addEventListener('submit',function(e){
       e.preventDefault();
       if(!form.checkValidity()){form.reportValidity();return;}
