@@ -238,6 +238,13 @@
   .topbar-btn{font-family:var(--f-sans);font-weight:700;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
     color:#1b1a17;background:var(--brass-bright);padding:.5em 1.15em;white-space:nowrap;transition:background .2s}
   .topbar-btn:hover{background:#c99a58}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2vw,24px)}
+  .quote{background:var(--white);border:1px solid var(--line);padding:1.9rem;display:flex;flex-direction:column}
+  .quote .stars{color:var(--brass-bright);letter-spacing:.2em;font-size:.9rem;margin-bottom:1rem}
+  .quote blockquote{margin:0;font-family:var(--f-head);font-size:var(--s-1);font-weight:500;line-height:1.45;color:var(--ink);flex:1}
+  .quote .who{margin-top:1.3rem;font-weight:700;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)}
+  .quote .who span{display:block;color:var(--faint);font-weight:600;margin-top:.2rem}
+  @media(max-width:920px){.quotes{grid-template-columns:1fr}}
   @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
 </style>
@@ -283,11 +290,11 @@
   <section class="pad">
     <div class="wrap statement">
       <div>
-        <span class="eyebrow">Residential Design &amp; Build &middot; North County San Diego</span>
+        <span class="eyebrow">Coastal Design&#8209;Build &middot; Solana Beach, CA</span>
         <h1>Homes designed and built to <em>live in, not just look at.</em></h1>
       </div>
       <div>
-        <p class="sub">One team, one contract &mdash; from the first drawing to the final walk&#8209;through. Kitchens, baths, additions, and whole&#8209;home remodels across Encinitas, Carlsbad, and North County San Diego.</p>
+        <p class="sub">Architecture, interior design, permitting, and construction &mdash; under one roof, one team, one schedule. Whole&#8209;home remodels, kitchens, baths, additions, and ADUs across coastal North County San Diego.</p>
         <div class="actions">
           <a href="#work" class="btn btn-solid btn-lg">View our work</a>
           <a href="#contact" class="btn btn-ghost btn-lg">Start a project</a>
@@ -303,13 +310,13 @@
       <div>
         <span class="eyebrow">Who we are</span>
         <h2 class="head" style="font-size:var(--s-3);font-weight:400;margin-top:1rem;max-width:18ch">A design&#8209;build firm for homeowners who want it done once, and done right.</h2>
-        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:52ch">We handle design, planning, and construction in&#8209;house &mdash; so you have a single team accountable from concept to completion. The result is a smoother project, a budget you can trust, and craftsmanship that holds up for decades.</p>
+        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:52ch">A coastal design&#8209;build studio in the Cedros Design District, Solana Beach. Architecture, interior design, permitting, and construction live under one roof &mdash; so every decision is made in the room with the people who build it. The bid you sign is the bid you pay.</p>
       </div>
       <div class="stat-grid">
-        <div class="stat"><div class="n">Design&#8209;build</div><div class="l">Design &amp; construction under one roof</div></div>
-        <div class="stat"><div class="n">Licensed</div><div class="l">Bonded &amp; fully insured</div></div>
-        <div class="stat"><div class="n">North County</div><div class="l">Encinitas, Carlsbad &amp; the coast</div></div>
-        <div class="stat"><div class="n">One team</div><div class="l">First sketch to final walk&#8209;through</div></div>
+        <div class="stat"><div class="n">Design&#8209;build</div><div class="l">Architecture, design &amp; build under one roof</div></div>
+        <div class="stat"><div class="n">5.0 &#9733;</div><div class="l">6 five&#8209;star Google reviews</div></div>
+        <div class="stat"><div class="n">Coastal N. County</div><div class="l">Solana Beach, Del Mar, Encinitas &amp; nearby</div></div>
+        <div class="stat"><div class="n">Est. 2024</div><div class="l">Studio in the Cedros Design District</div></div>
       </div>
     </div>
   </section>
@@ -322,12 +329,12 @@
         <p class="lead">From a single room to a whole&#8209;home transformation, we own every step &mdash; design, permitting, and construction.</p>
       </div>
       <div class="services">
-        <article class="svc"><span class="num">01</span><h3>Kitchen remodels</h3><p>Layouts that work the way you cook &mdash; custom cabinetry, stone, and lighting specified to the detail.</p></article>
-        <article class="svc"><span class="num">02</span><h3>Bath &amp; primary suites</h3><p>Spa&#8209;grade bathrooms with tile and waterproofing done to last decades, not seasons.</p></article>
-        <article class="svc"><span class="num">03</span><h3>Additions &amp; second stories</h3><p>More room that looks like it was always there, matched to your home's character.</p></article>
-        <article class="svc"><span class="num">04</span><h3>Whole&#8209;home remodels</h3><p>Top&#8209;to&#8209;bottom reimaginings, phased so your family can live through it with less disruption.</p></article>
-        <article class="svc"><span class="num">05</span><h3>Outdoor living</h3><p>Pools, decks, and patios that extend the house into the yard for year&#8209;round use.</p></article>
-        <article class="svc"><span class="num">06</span><h3>Custom cabinetry &amp; storage</h3><p>Built&#8209;ins and smart storage designed around how you actually live, down to the drawer.</p></article>
+        <article class="svc"><span class="num">01</span><h3>Whole&#8209;home remodels</h3><p>Structure, finishes, and flow rethought as one project &mdash; drawn and built under one roof.</p></article>
+        <article class="svc"><span class="num">02</span><h3>Kitchen remodels</h3><p>Custom cabinetry, hand&#8209;picked stone, and a layout tuned to the way you actually cook.</p></article>
+        <article class="svc"><span class="num">03</span><h3>Bathroom remodels</h3><p>Primary suites and spa&#8209;style conversions, detailed to the same standard as the finishes.</p></article>
+        <article class="svc"><span class="num">04</span><h3>Custom ADUs</h3><p>Coastal ADU permits in 60 days under AB&nbsp;462 &mdash; design, permitting, and build, one team.</p></article>
+        <article class="svc"><span class="num">05</span><h3>Home additions</h3><p>Primary&#8209;suite, second&#8209;story, and garage conversions that read as original to the house.</p></article>
+        <article class="svc"><span class="num">06</span><h3>Outdoor living</h3><p>Covered patios, outdoor kitchens, and pool decks designed for coastal exposure.</p></article>
       </div>
     </div>
   </section>
@@ -395,12 +402,27 @@
       <div>
         <span class="eyebrow">Why Elevations</span>
         <h2 class="head" style="font-size:var(--s-3);font-weight:400;margin-top:1rem">Built by people who answer their own phone.</h2>
-        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:48ch">Elevations Design Build is a North County San Diego design&#8209;build firm. We handle design, planning, and construction in&#8209;house, so homeowners work with one accountable team from the first sketch to the final walk&#8209;through.</p>
+        <p style="color:var(--ink-soft);margin-top:1.1rem;max-width:48ch">Elevations Design Build is a coastal design&#8209;build studio in the Cedros Design District, Solana Beach, established 2024. Architecture, interior design, permitting, and construction live in the same office &mdash; one team, one process, end to end, working with partnered licensed architects.</p>
         <div class="diff-list">
           <div class="diff"><span class="k">A</span><div><h3>One accountable team</h3><p>Designer, estimator, and builder work from the same drawings and the same budget.</p></div></div>
-          <div class="diff"><span class="k">B</span><div><h3>Fixed, transparent pricing</h3><p>Allowances and selections itemized up front. Change orders in writing, never a surprise.</p></div></div>
+          <div class="diff"><span class="k">B</span><div><h3>Interiors to the SKU</h3><p>Cabinetry, stone, tile, and fixtures specified by manufacturer SKU during design. The bid you sign is the bid you pay.</p></div></div>
           <div class="diff"><span class="k">C</span><div><h3>Craftsmanship that holds up</h3><p>We build the parts you can't see &mdash; framing, waterproofing, mechanicals &mdash; to the same standard as the finishes.</p></div></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="pad tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Reviews &middot; Google</span><h2>In their words.</h2></div>
+        <p class="lead">Rated 5.0 across 6 Google reviews. <a href="https://www.google.com/search?q=Elevations+Design+Build+Solana+Beach+reviews" target="_blank" rel="noopener" style="color:var(--brass);font-weight:700">Read them on Google &rarr;</a></p>
+      </div>
+      <div class="quotes">
+        <figure class="quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>The best contractor and design team we have ever worked with.</blockquote><figcaption class="who">Erin Malone<span>Whole&#8209;home renovation</span></figcaption></figure>
+        <figure class="quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>They made the entire process feel approachable and comfortable.</blockquote><figcaption class="who">Renee Parrish<span>Bathroom remodel + patio</span></figcaption></figure>
+        <figure class="quote"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><blockquote>An amazing job on our full&#8209;home remodel.</blockquote><figcaption class="who">Mike McLeish<span>Second&#8209;story + full&#8209;home remodel</span></figcaption></figure>
       </div>
     </div>
   </section>
@@ -446,8 +468,10 @@
             <div id="sent" role="status">Thanks! For the quickest response, grab a time on the scheduler.</div>
           </form>
           <div class="cinfo" style="margin-top:2rem">
-            <div><div class="l">Serving</div><div class="v small">Encinitas, Carlsbad &amp; North County San Diego</div></div>
-            <div><div class="l">Hours</div><div class="v small">Mon&ndash;Fri, 8&ndash;5 &middot; Site visits by appointment</div></div>
+            <div><div class="l">Call</div><div class="v"><a href="tel:+17604074753">(760) 407&#8209;4753</a></div></div>
+            <div><div class="l">Email</div><div class="v small"><a href="mailto:info@elevationsdesignbuild.com">info@elevationsdesignbuild.com</a></div></div>
+            <div><div class="l">Studio</div><div class="v small">Cedros Design District, Solana Beach, CA</div></div>
+            <div><div class="l">Serving</div><div class="v small">Solana Beach, Del Mar, Rancho Santa Fe, La Jolla, Encinitas, Cardiff &amp; Carlsbad</div></div>
           </div>
         </div>
       </div>
@@ -459,11 +483,11 @@
   <div class="wrap foot">
     <div style="max-width:24ch">
       <a class="logo" href="#top"><img src="assets/logo.png" alt="Elevations Design Build"></a>
-      <p class="foot-blurb">Residential design &amp; build in North County San Diego. Licensed, bonded, and insured.</p>
+      <p class="foot-blurb">Coastal design&#8209;build in Solana Beach &amp; North County San Diego. Licensed, bonded &amp; insured.</p>
     </div>
     <div class="foot-col"><span class="h">Explore</span><a href="#work">Work</a><a href="#services">Services</a><a href="#film">Video</a><a href="#process">Process</a><a href="#about">About</a></div>
-    <div class="foot-col"><span class="h">Area</span><span>Encinitas, CA</span><span>Carlsbad, CA</span><span>North County San Diego</span></div>
-    <div class="foot-col"><span class="h">Follow</span><a href="#contact">Instagram</a><a href="#contact">Houzz</a><a href="#contact">Google</a></div>
+    <div class="foot-col"><span class="h">Area</span><span>Solana Beach, CA</span><span>Del Mar &amp; Encinitas</span><span>Coastal North County SD</span></div>
+    <div class="foot-col"><span class="h">Connect</span><a href="tel:+17604074753">(760) 407&#8209;4753</a><a href="mailto:info@elevationsdesignbuild.com">info@elevationsdesignbuild.com</a><a href="https://www.houzz.com/pro/elevationsdesignbuild/elevations-design-build" target="_blank" rel="noopener">Houzz</a></div>
   </div>
   <div class="wrap legal">
     <span>&copy; <span id="yr"></span> Elevations Design Build. All rights reserved.</span>
