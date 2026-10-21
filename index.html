@@ -271,6 +271,11 @@
     border:1px solid rgba(255,255,255,.22);color:#e8e4dc;transition:background .2s,color .2s,border-color .2s}
   .social a:hover{background:#fff;color:var(--ink);border-color:#fff}
   .social svg{width:18px;height:18px}
+  .ig-follow{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.3rem;font-family:var(--f-sans);
+    font-weight:600;font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+    border:1px solid var(--line);padding:.72rem 1.15rem;transition:border-color .2s,color .2s}
+  .ig-follow:hover{border-color:var(--brass);color:var(--brass)}
+  .ig-follow svg{width:18px;height:18px}
   @media(max-width:800px){.cedros{grid-template-columns:1fr}.films{grid-template-columns:1fr}.cedros-reel{max-width:380px;aspect-ratio:9/16}}
   @media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
   @media(prefers-reduced-motion:reduce){.proj .frame img{transition:none}}
@@ -327,6 +332,7 @@
           <a href="#contact" class="btn btn-ghost btn-lg">Start a project</a>
         </div>
         <div class="trust" style="margin-top:1.6rem"><span>Licensed</span><span>&middot;</span><span>Bonded</span><span>&middot;</span><span>Insured</span></div>
+        <a href="#" target="_blank" rel="noopener" class="ig-follow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg> Follow on Instagram</a>
       </div>
     </div>
   </section>
@@ -347,7 +353,7 @@
           </div>
         </div>
         <div class="cedros-reel">
-          <video controls preload="none" playsinline poster="assets/video/design-district-poster.jpg">
+          <video autoplay muted loop playsinline controls poster="assets/video/design-district-poster.jpg">
             <source src="assets/video/design-district.mp4" type="video/mp4">
           </video>
         </div>
@@ -368,11 +374,11 @@
       </div>
       <div class="films">
         <figure>
-          <div class="film"><video controls preload="none" playsinline poster="assets/video/saxony-poster.jpg"><source src="assets/video/saxony-transformation.mp4" type="video/mp4"></video></div>
+          <div class="film"><video autoplay muted loop playsinline controls poster="assets/video/saxony-poster.jpg"><source src="assets/video/saxony-transformation.mp4" type="video/mp4"></video></div>
           <figcaption><b>Encinitas remodel</b>Construction to completed</figcaption>
         </figure>
         <figure>
-          <div class="film"><video controls preload="none" playsinline poster="assets/video/cavern-poster.jpg"><source src="assets/video/cavern-tour.mp4" type="video/mp4"></video></div>
+          <div class="film"><video autoplay muted loop playsinline controls poster="assets/video/cavern-poster.jpg"><source src="assets/video/cavern-tour.mp4" type="video/mp4"></video></div>
           <figcaption><b>Cavern Place remodel</b>A walk through the finished home</figcaption>
         </figure>
       </div>
